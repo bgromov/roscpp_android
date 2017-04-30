@@ -14,9 +14,9 @@ RUN unzip android-ndk-r14b-linux-x86_64.zip -d /opt
 
 # Set-up environment
 ENV ANDROID_NDK /opt/android-ndk-r14b
-ENV ANDROID_NDK_TOOLCHAIN /opt/android_toolchain-r14b
+ENV ANDROID_STANDALONE_TOOLCHAIN /opt/android-toolchain
 
-RUN $ANDROID_NDK/build/tools/make_standalone_toolchain.py --arch arm --api 14 --install-dir $ANDROID_NDK_TOOLCHAIN
+RUN $ANDROID_NDK/build/tools/make_standalone_toolchain.py --arch arm --api 14 --install-dir $ANDROID_STANDALONE_TOOLCHAIN
 
 # Install g++ to avoid "CMAKE_CXX_COMPILER-NOTFOUND was not found." error
 RUN apt-get update && apt-get install -y g++ cmake make
